@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">AMS</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Home_fragment">Hello Home fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Change_password_fragment">This is change password user interface </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="View_attendance">this is View Attendance ui fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="faculty_home_fragment">This is faculty home fragment</string>
+    <string name="faculty_stu_list_fragment">This is Student list fragment</string>
+    <string name="faculty_take_attendance_fragment">This is Take Attendance fragment</string>
+    <string name="communicate">Communicate</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="student_list">Student List</string>
+    <string name="take_attendance">Take Attendance</string>
+    <string name="view_attendance">View Attendance</string>
+    <string name="change_password">Change Password</string>
+    <string name="don_t_have_account_signup">Don\'t have account SignUp</string>
+    <string name="forget_password">Forget password</string>
+    <string name="login">Login</string>
+    <string name="type">Type</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="welcome_to_attendance_monitoring_system">WELCOME TO ATTENDANCE MONITORING SYSTEM</string>
+    <string name="this_is_android_app_logo">This is android app logo</string>
+    <string name="name">Name</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="have_account_signin">have an account, SignIn</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="password">Password</string>
+</resources>
