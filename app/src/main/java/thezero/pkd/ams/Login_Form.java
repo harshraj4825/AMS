@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,18 +13,37 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 import thezero.pkd.ams.Faculty.FacultyMain;
+import thezero.pkd.ams.Retrofit.ClientApi;
+import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
+import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.StandardHelper.UserType;
 import thezero.pkd.ams.Students.Student_Main;
 
 public class Login_Form extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Toast toast;
     private int spinner_selected;
+    private Retrofit retrofit;
+    TextView userId,userPassword;
+    private RetrofitRoutesInterface retrofitRoutesInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__form);//reference of login layout
+        retrofitRoutesInterface= ClientApi.getInstance().getApi();//connecting to the internet
+        //to get text
+        userId=findViewById(R.id.userEmail);
+        userPassword=findViewById(R.id.password);
 
         Button btn_login = findViewById(R.id.login_button);//reference of login button
         btn_login.setOnClickListener(btn_login_listener);//setting onclick on resister button
@@ -47,15 +67,49 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
     View.OnClickListener btn_login_listener=new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            toast=Toast.makeText(getApplicationContext(),"Logining",Toast.LENGTH_SHORT);
-            toast.show();
+//            String password=userPassword.getText().toString();
+//            toast=Toast.makeText(getApplicationContext(),"Logining",Toast.LENGTH_SHORT);
+//            toast.show();
             if (spinner_selected==1){
                 Intent intent=new Intent(Login_Form.this, FacultyMain.class);
                 startActivity(intent);
             }
             else {
-                Intent intent=new Intent(Login_Form.this,Student_Main.class);
-                startActivity(intent);
+                String Pass=userPassword.getText().toString();
+                String id=userId.getText().toString();
+                if(TextUtils.isEmpty(Pass)|| TextUtils.isEmpty(id)){
+                    Toast.makeText(Login_Form.this,"Empty field not allowed!",
+                    Toast.LENGTH_SHORT).show();
+                }else if(!(TextUtils.isDigitsOnly(id))){
+                    Toast.makeText(Login_Form.this,"Enter your college id as a username",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    JsonObject jsonObject=new JsonObject();//creating json instance
+                    //adding property
+                    jsonObject.addProperty("Password",Pass);
+                    jsonObject.addProperty("UserId",Integer.parseInt(id));
+                    //to call routes
+                    Call<LoginStudentResult> call=retrofitRoutesInterface.executeLogin(jsonObject);
+                    call.enqueue(new Callback <LoginStudentResult>() {
+                        @Override
+                        public void onResponse(Call <LoginStudentResult> call, Response <LoginStudentResult> response) {
+                        if(response.code()==200){
+                            LoginStudentResult result=response.body();
+                            Intent intent=new Intent(Login_Form.this,Student_Main.class);
+                            startActivity(intent);
+                        }else if (response.code()==201){
+                            Toast.makeText(Login_Form.this,"Wrong Credential",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                        }
+                        @Override
+                        public void onFailure(Call <LoginStudentResult> call, Throwable t) {
+                            Toast.makeText(Login_Form.this,t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         }
     };

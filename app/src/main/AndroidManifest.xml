@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="thezero.pkd.ams">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.wifi" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Faculty.FacultyMain"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Faculty.FacultyMain"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Students.Student_Main"
             android:theme="@style/AppTheme.NoActionBar" />
