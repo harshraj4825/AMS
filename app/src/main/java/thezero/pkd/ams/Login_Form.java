@@ -25,6 +25,7 @@ import retrofit2.Retrofit;
 import thezero.pkd.ams.Faculty.FacultyMain;
 import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
+import thezero.pkd.ams.Retrofit.Retrofit_models.LoginFacultyResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.StandardHelper.UserType;
 import thezero.pkd.ams.Students.Student_Main;
@@ -67,16 +68,40 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
     View.OnClickListener btn_login_listener=new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//            String password=userPassword.getText().toString();
-//            toast=Toast.makeText(getApplicationContext(),"Logining",Toast.LENGTH_SHORT);
-//            toast.show();
-            if (spinner_selected==1){
-                Intent intent=new Intent(Login_Form.this, FacultyMain.class);
-                startActivity(intent);
+            String Pass=userPassword.getText().toString();
+            String id=userId.getText().toString();
+            if (spinner_selected==1){//spinner==1 means faculty selected
+                if(TextUtils.isEmpty(Pass)||TextUtils.isEmpty(id)){
+                    Toast.makeText(Login_Form.this,"Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    JsonObject jsonObject=new JsonObject();//creating json instance
+                    jsonObject.addProperty("Password",Pass);
+                    jsonObject.addProperty("Email",id);
+                    Call<LoginFacultyResult> call=retrofitRoutesInterface.executeFacultyLogin(jsonObject);
+                    call.enqueue(new Callback <LoginFacultyResult>() {
+                        @Override
+                        public void onResponse(Call <LoginFacultyResult> call, Response <LoginFacultyResult> response) {
+                            if(response.code()==200){
+                                LoginFacultyResult result=response.body();
+                                Intent intent=new Intent(Login_Form.this,FacultyMain.class);
+                                startActivity(intent);
+                            }else if (response.code()==201){
+                                Toast.makeText(Login_Form.this,"Wrong Credential",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call <LoginFacultyResult> call, Throwable t) {
+                            Toast.makeText(Login_Form.this,t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
             }
             else {
-                String Pass=userPassword.getText().toString();
-                String id=userId.getText().toString();
                 if(TextUtils.isEmpty(Pass)|| TextUtils.isEmpty(id)){
                     Toast.makeText(Login_Form.this,"Empty field not allowed!",
                     Toast.LENGTH_SHORT).show();
