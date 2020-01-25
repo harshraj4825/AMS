@@ -66,8 +66,36 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
             String m_cn_pass=cn_password.getText().toString();
             String m_userId=username.getText().toString();
             if (spinner_selected==1){
-                Intent intent=new Intent(SignupForm.this, FacultyMain.class);
-                startActivity(intent);
+                if(TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_name)||TextUtils.isEmpty(m_userId)) {
+                    Toast.makeText(SignupForm.this, "Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }else if (!m_cn_pass.equals(m_pass)) {
+                    Toast.makeText(SignupForm.this, "Both Password are not same", Toast.LENGTH_SHORT).show();
+                }else{
+                    JsonObject jsonObject=new JsonObject();
+                    jsonObject.addProperty("Name",m_name);
+                    jsonObject.addProperty("Password",m_pass);
+                    jsonObject.addProperty("Email",m_userId);
+                    Call call=retrofitRoutesInterface.executeFacultySignUp(jsonObject);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            if (response.code()==200){
+                                Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(SignupForm.this,FacultyMain.class);
+                                startActivity(intent);
+                            }else if (response.code()==201){
+                                Toast.makeText(SignupForm.this,"Username already exist",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            Toast.makeText(SignupForm.this,t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+                }
             }
             else {
                 if(TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_name)||TextUtils.isEmpty(m_userId)){
@@ -83,7 +111,7 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                     jsonObject.addProperty("Name",m_name);
                     jsonObject.addProperty("Password",m_pass);
                     jsonObject.addProperty("UserId",Integer.parseInt(m_userId));
-                    Call call=retrofitRoutesInterface.executeSignUp(jsonObject);
+                    Call call=retrofitRoutesInterface.executeStudentSignUp(jsonObject);
                     call.enqueue(new Callback() {
                         @Override
                         public void onResponse(Call call, Response response) {

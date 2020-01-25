@@ -16,8 +16,10 @@ public interface RetrofitRoutesInterface {
     Call <LoginStudentResult> executeLogin(@Body JsonObject body);
     //request for student sign up
     @POST("/student/signup")
-    Call<Void> executeSignUp(@Body JsonObject body);
+    Call<Void> executeStudentSignUp(@Body JsonObject body);
     //request for faculty login
     @POST("/faculty/login")
     Call<LoginFacultyResult> executeFacultyLogin(@Body JsonObject jsonObject);
+    @POST("/faculty/signup")
+    Call<Void> executeFacultySignUp(@Body JsonObject body);
 }
