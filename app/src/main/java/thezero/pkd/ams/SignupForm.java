@@ -83,6 +83,8 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                             if (response.code()==200){
                                 Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(SignupForm.this,FacultyMain.class);
+                                intent.putExtra("userId",m_userId);
+                                intent.putExtra("username",m_name);
                                 startActivity(intent);
                             }else if (response.code()==201){
                                 Toast.makeText(SignupForm.this,"Username already exist",Toast.LENGTH_SHORT).show();
@@ -118,6 +120,8 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                             if (response.code()==200){
                                 Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(SignupForm.this, Student_Main.class);
+                                intent.putExtra("userId",m_userId);
+                                intent.putExtra("username",m_name);
                                 startActivity(intent);
                             }else if (response.code()==201){
                                 Toast.makeText(SignupForm.this,"Username already exist",Toast.LENGTH_SHORT).show();

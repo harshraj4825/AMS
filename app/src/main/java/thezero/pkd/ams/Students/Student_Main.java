@@ -7,11 +7,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import com.google.android.material.navigation.NavigationView;
 import thezero.pkd.ams.R;
 
 public class Student_Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mNavDrawer;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +25,13 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.stu_toolbar);
         setSupportActionBar(toolbar);
         mNavDrawer = findViewById(R.id.stu_drawer_layout);
-        NavigationView navigationView=findViewById(R.id.stu_nav_view);
+        navigationView=findViewById(R.id.stu_nav_view);
+        //setting name and  id in nev header
+        View headerView=navigationView.getHeaderView(0);
+        TextView uName=headerView.findViewById(R.id.uName);
+        uName.setText(getIntent().getStringExtra("username"));
+        TextView uid=headerView.findViewById(R.id.uId);
+        uid.setText((getIntent().getStringExtra("userId")));
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mNavDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );

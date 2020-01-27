@@ -7,6 +7,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import com.google.android.material.navigation.NavigationView;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Students.ChangePasswordFragment;
@@ -14,6 +17,7 @@ import thezero.pkd.ams.Students.ViewAttendanceFragment;
 
 public class FacultyMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mNavDrawer;
+    private TextView uName,uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +27,17 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
         setSupportActionBar(fac_toolbar);
         mNavDrawer = findViewById(R.id.fac_drawer_layout);
         NavigationView navigationView=findViewById(R.id.fac_nav_view);
+        //setting name and  id in nev header
+        View headerView=navigationView.getHeaderView(0);
+        uName=headerView.findViewById(R.id.uName);
+        uName.setText(getIntent().getStringExtra("username"));
+        uid=headerView.findViewById(R.id.uId);
+        uid.setText(getIntent().getStringExtra("userId"));
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mNavDrawer, fac_toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
         mNavDrawer.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
         if (savedInstanceState==null) {
             getSupportFragmentManager().beginTransaction()

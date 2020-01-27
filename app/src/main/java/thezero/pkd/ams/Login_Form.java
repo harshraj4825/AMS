@@ -86,6 +86,8 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
                             if(response.code()==200){
                                 LoginFacultyResult result=response.body();
                                 Intent intent=new Intent(Login_Form.this,FacultyMain.class);
+                                intent.putExtra("userId",result.getUserId());
+                                intent.putExtra("username",result.getName());
                                 startActivity(intent);
                             }else if (response.code()==201){
                                 Toast.makeText(Login_Form.this,"Wrong Credential",
@@ -122,6 +124,8 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
                         if(response.code()==200){
                             LoginStudentResult result=response.body();
                             Intent intent=new Intent(Login_Form.this,Student_Main.class);
+                            intent.putExtra("userId",result.getUserId().toString());
+                            intent.putExtra("username",result.getName());
                             startActivity(intent);
                         }else if (response.code()==201){
                             Toast.makeText(Login_Form.this,"Wrong Credential",
