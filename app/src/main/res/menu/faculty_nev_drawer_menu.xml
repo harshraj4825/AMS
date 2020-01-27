@@ -17,6 +17,10 @@
             android:id="@+id/nav_faculty_view_attendance"
             android:icon="@drawable/view_attendance_icon"
             android:title="@string/view_attendance" />
+        <item
+            android:id="@+id/nav_faculty_register_course"
+            android:icon="@drawable/ic_add_box_black_24dp"
+            android:title="@string/register_course"/>
 
         <item android:id="@+id/nev_faculty_change_password"
             android:icon="@drawable/change_passwod_icon"

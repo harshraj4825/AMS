@@ -29,4 +29,8 @@ public interface RetrofitRoutesInterface {
     Call<Void> executeFacultySignUp(@Body JsonObject body);
     @PUT("/faculty/{email}")
     Call<Void> executeFacChange_pass(@Path("email") String email,@Body JsonObject jsonObject);
+    //request for course register
+    @POST("/courses/register")
+    Call<Void> executeFacCourse_register(@Body JsonObject jsonObject);
+
 }

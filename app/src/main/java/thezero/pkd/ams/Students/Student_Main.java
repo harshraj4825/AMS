@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +49,10 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.navHome);
         }
     }
+    // for log out
+    private void logout(){
+        
+    }
 //    this override method is for when we clicked back button only nav drawer goes close
     @Override
     public void onBackPressed(){
@@ -80,6 +86,7 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                         .commit();
                 break;
             case R.id.nav_logout:
+                logout();
                 // add action
                 break;
         }

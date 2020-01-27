@@ -84,6 +84,11 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
                         .replace(R.id.fac_fragment_container,new ViewAttendanceFragment())
                         .commit();
                 break;
+            case R.id.nav_faculty_register_course:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fac_fragment_container,new Register_course())
+                        .commit();
+                break;
             case R.id.nev_faculty_change_password:
                 //add change password fragment
                 getSupportFragmentManager().beginTransaction()

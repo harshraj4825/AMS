@@ -37,4 +37,8 @@
     <string name="new_password">New Password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="password">Password</string>
+    <string name="register_course">Register Course</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
