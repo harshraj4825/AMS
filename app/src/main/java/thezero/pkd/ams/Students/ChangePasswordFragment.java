@@ -23,6 +23,7 @@ import thezero.pkd.ams.Faculty.FacHomeFragment;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
+import thezero.pkd.ams.utils.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,7 +62,7 @@ public class ChangePasswordFragment extends Fragment {
             JsonObject jsonObject=new JsonObject();
             jsonObject.addProperty("Password",old_pass);
             jsonObject.addProperty("NewPassword",new_pass);
-            String path="1317@gmail.com";//TODO faculty email directly
+            String path=new User(getContext()).getUserId();
             if(TextUtils.isEmpty(old_pass)||TextUtils.isEmpty(new_pass)||TextUtils.isEmpty(cn_new_pass)){
                 Toast.makeText(getContext(),"All field required",Toast.LENGTH_SHORT).show();
             }else if(!new_pass.equals(cn_new_pass)){

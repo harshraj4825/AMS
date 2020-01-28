@@ -22,6 +22,7 @@ import retrofit2.Response;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
+import thezero.pkd.ams.utils.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,7 +55,7 @@ public class Register_course extends Fragment {
         public void onClick(View view) {
             String mCourse_code=course_code.getText().toString();
             String mCourse_name=course_name.getText().toString();
-            String mFaculty_email="1317@gmail.com";//TODO faculty email directly
+            String mFaculty_email=new User(getContext()).getUserId();
             JsonObject jsonObject=new JsonObject();
             jsonObject.addProperty("Course_code",mCourse_code);
             jsonObject.addProperty("Course_name",mCourse_name);
@@ -87,5 +88,4 @@ public class Register_course extends Fragment {
 
         }
     };
-
 }

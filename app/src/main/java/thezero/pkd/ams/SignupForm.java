@@ -24,6 +24,7 @@ import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.StandardHelper.UserType;
 import thezero.pkd.ams.Students.Student_Main;
+import thezero.pkd.ams.utils.User;
 
 public class SignupForm extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView have_an_account_signIn,name,username,password,cn_password;
@@ -65,6 +66,7 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
             String m_pass=password.getText().toString();
             String m_cn_pass=cn_password.getText().toString();
             String m_userId=username.getText().toString();
+            User user=new User(SignupForm.this);
             if (spinner_selected==1){
                 if(TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_cn_pass)||TextUtils.isEmpty(m_name)||TextUtils.isEmpty(m_userId)) {
                     Toast.makeText(SignupForm.this, "Empty field not allowed!",
@@ -82,10 +84,12 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                         public void onResponse(Call call, Response response) {
                             if (response.code()==200){
                                 Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
+                                user.setUserId(m_userId);
+                                user.setPassword(m_pass);
+                                user.setName(m_name);
                                 Intent intent=new Intent(SignupForm.this,FacultyMain.class);
-                                intent.putExtra("userId",m_userId);
-                                intent.putExtra("username",m_name);
                                 startActivity(intent);
+                                finish();
                             }else if (response.code()==201){
                                 Toast.makeText(SignupForm.this,"Username already exist",Toast.LENGTH_SHORT).show();
                             }
@@ -119,9 +123,10 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                         public void onResponse(Call call, Response response) {
                             if (response.code()==200){
                                 Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
+                                user.setUserId(m_userId);
+                                user.setPassword(m_pass);
+                                user.setName(m_name);
                                 Intent intent=new Intent(SignupForm.this, Student_Main.class);
-                                intent.putExtra("userId",m_userId);
-                                intent.putExtra("username",m_name);
                                 startActivity(intent);
                             }else if (response.code()==201){
                                 Toast.makeText(SignupForm.this,"Username already exist",Toast.LENGTH_SHORT).show();

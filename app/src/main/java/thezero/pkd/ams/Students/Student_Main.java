@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,7 +14,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import thezero.pkd.ams.Faculty.FacultyMain;
+import thezero.pkd.ams.Login_Form;
 import thezero.pkd.ams.R;
+import thezero.pkd.ams.utils.User;
 
 public class Student_Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mNavDrawer;
@@ -31,9 +36,9 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
         //setting name and  id in nev header
         View headerView=navigationView.getHeaderView(0);
         TextView uName=headerView.findViewById(R.id.uName);
-        uName.setText(getIntent().getStringExtra("username"));
+        uName.setText(new User(Student_Main.this).getName());
         TextView uid=headerView.findViewById(R.id.uId);
-        uid.setText((getIntent().getStringExtra("userId")));
+        uid.setText(new User(Student_Main.this).getUserId());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mNavDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
@@ -48,10 +53,6 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                     .commit();
             navigationView.setCheckedItem(R.id.navHome);
         }
-    }
-    // for log out
-    private void logout(){
-        
     }
 //    this override method is for when we clicked back button only nav drawer goes close
     @Override
@@ -86,8 +87,8 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                         .commit();
                 break;
             case R.id.nav_logout:
-                logout();
-                // add action
+                new User(Student_Main.this).removeUser();
+                startActivity(new Intent(Student_Main.this, Login_Form.class));
                 break;
         }
         mNavDrawer.closeDrawer(GravityCompat.START);

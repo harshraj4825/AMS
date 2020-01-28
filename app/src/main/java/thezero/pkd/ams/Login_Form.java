@@ -29,6 +29,7 @@ import thezero.pkd.ams.Retrofit.Retrofit_models.LoginFacultyResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.StandardHelper.UserType;
 import thezero.pkd.ams.Students.Student_Main;
+import thezero.pkd.ams.utils.User;
 
 public class Login_Form extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Toast toast;
@@ -70,6 +71,7 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
         public void onClick(View view) {
             String Pass=userPassword.getText().toString();
             String id=userId.getText().toString();
+            User user=new User(Login_Form.this);
             if (spinner_selected==1){//spinner==1 means faculty selected
                 if(TextUtils.isEmpty(Pass)||TextUtils.isEmpty(id)){
                     Toast.makeText(Login_Form.this,"Empty field not allowed!",
@@ -85,10 +87,12 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
                         public void onResponse(Call <LoginFacultyResult> call, Response <LoginFacultyResult> response) {
                             if(response.code()==200){
                                 LoginFacultyResult result=response.body();
+                                user.setName(result.getName());
+                                user.setUserId(id);
+                                user.setPassword(Pass);
                                 Intent intent=new Intent(Login_Form.this,FacultyMain.class);
-                                intent.putExtra("userId",result.getUserId());
-                                intent.putExtra("username",result.getName());
                                 startActivity(intent);
+                                finish();
                             }else if (response.code()==201){
                                 Toast.makeText(Login_Form.this,"Wrong Credential",
                                         Toast.LENGTH_LONG).show();
@@ -123,10 +127,12 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
                         public void onResponse(Call <LoginStudentResult> call, Response <LoginStudentResult> response) {
                         if(response.code()==200){
                             LoginStudentResult result=response.body();
+                            user.setName(result.getName());
+                            user.setUserId(id);
+                            user.setPassword(Pass);
                             Intent intent=new Intent(Login_Form.this,Student_Main.class);
-                            intent.putExtra("userId",result.getUserId().toString());
-                            intent.putExtra("username",result.getName());
                             startActivity(intent);
+                            finish();
                         }else if (response.code()==201){
                             Toast.makeText(Login_Form.this,"Wrong Credential",
                                     Toast.LENGTH_LONG).show();

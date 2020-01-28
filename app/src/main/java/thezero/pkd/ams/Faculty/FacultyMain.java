@@ -5,15 +5,20 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import thezero.pkd.ams.Login_Form;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Students.ChangePasswordFragment;
 import thezero.pkd.ams.Students.ViewAttendanceFragment;
+import thezero.pkd.ams.utils.User;
 
 public class FacultyMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mNavDrawer;
@@ -30,9 +35,9 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
         //setting name and  id in nev header
         View headerView=navigationView.getHeaderView(0);
         uName=headerView.findViewById(R.id.uName);
-        uName.setText(getIntent().getStringExtra("username"));
+        uName.setText(new User(FacultyMain.this).getName());
         uid=headerView.findViewById(R.id.uId);
-        uid.setText(getIntent().getStringExtra("userId"));
+        uid.setText(new User(FacultyMain.this).getUserId());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mNavDrawer, fac_toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
@@ -96,7 +101,8 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
                         .commit();
                 break;
             case R.id.nav_faculty_logout:
-                // add action
+                new User(FacultyMain.this).removeUser();
+                startActivity(new Intent(FacultyMain.this, Login_Form.class));
                 break;
         }
         mNavDrawer.closeDrawer(GravityCompat.START);
