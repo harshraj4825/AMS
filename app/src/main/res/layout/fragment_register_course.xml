@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Enter Course Code"
-        android:inputType="textPassword" />
+        />
 
     <TextView
         android:id="@+id/course_name_text"
@@ -38,7 +38,7 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Enter Course Name"
-        android:inputType="textPassword" />
+        />
     <Button
         android:id="@+id/register_course_btn"
         android:layout_width="match_parent"

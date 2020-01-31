@@ -30,7 +30,7 @@ import thezero.pkd.ams.utils.User;
  */
 public class ChangePasswordFragment extends Fragment {
     private TextView old_password,new_password,cn_new_password;
-    Button change_btn;
+    private Button change_btn;
     private RetrofitRoutesInterface retrofitRoutesInterface;
 
 
