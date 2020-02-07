@@ -35,8 +35,9 @@ public class facHomeAdapter extends RecyclerView.Adapter<facHomeAdapter.modelVie
 
     @Override
     public void onBindViewHolder(@NonNull modelViewHolder holder, int position) {
-        holder.Course_code.setText(course_registered_modelList.get(position).getCourse_code());
+        holder.Course_code.setText(course_registered_modelList.get(position).getCourse_code().toUpperCase());
         holder.no_of_stu.setText(course_registered_modelList.get(position).getRegistered_Students().toString());
+        //to set onclick
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

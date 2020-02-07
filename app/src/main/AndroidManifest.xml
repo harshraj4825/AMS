@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Faculty.CourseInformatin"></activity>
+        <activity android:name=".Students.Student_attendance_Information"></activity>
+        <activity android:name=".Faculty.CourseInformatin" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +29,7 @@
             android:name=".Students.Student_Main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignupForm" />
-        <activity android:name=".Login_Form"></activity>
+        <activity android:name=".Login_Form" />
     </application>
 
 </manifest>

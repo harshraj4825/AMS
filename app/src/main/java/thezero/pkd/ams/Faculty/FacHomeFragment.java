@@ -3,7 +3,9 @@ package thezero.pkd.ams.Faculty;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,9 +66,12 @@ public class FacHomeFragment extends Fragment {
             @Override
             public void onResponse(Call <List <course_registered_model>> call, Response <List <course_registered_model>> response) {
                 course_registered_modelList=response.body();
-                if(course_registered_modelList==null){
+                if(course_registered_modelList.size()==0){
                     Toast.makeText(getContext(),"No Course available",Toast.LENGTH_SHORT).show();
                 }
+                DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+                dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.line_border));
+                recyclerView.addItemDecoration(dividerItemDecoration);
                 facHomeAdapter=new facHomeAdapter(getContext(),course_registered_modelList);
                 recyclerView.setAdapter(facHomeAdapter);
             }

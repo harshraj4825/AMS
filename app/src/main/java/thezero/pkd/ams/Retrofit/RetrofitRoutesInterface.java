@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import thezero.pkd.ams.Retrofit.Retrofit_models.C_I_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginFacultyResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.course_registered_model;
@@ -40,5 +41,9 @@ public interface RetrofitRoutesInterface {
     //to get all courses which faculty registered
     @POST("/courses/get-all")
     Call<List<course_registered_model>> executeFacGetCourses(@Body JsonObject jsonObject);
+
+    //get course/registered student details.
+    @POST("/courses/findone")
+    Call<C_I_Result> executeC_I_result(@Body JsonObject jsonObject);
 
 }
