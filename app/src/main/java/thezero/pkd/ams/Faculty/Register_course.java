@@ -53,8 +53,8 @@ public class Register_course extends Fragment {
     View.OnClickListener register_course_listerner=new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            String mCourse_code=course_code.getText().toString();
-            String mCourse_name=course_name.getText().toString();
+            String mCourse_code=course_code.getText().toString().toUpperCase();
+            String mCourse_name=course_name.getText().toString().toUpperCase();
             String mFaculty_email=new User(getContext()).getUserId();
             JsonObject jsonObject=new JsonObject();
             jsonObject.addProperty("Course_code",mCourse_code);

@@ -31,7 +31,7 @@ public class CourseInformatin extends AppCompatActivity {
     private C_I_Adapter cIAdapter;
     private RetrofitRoutesInterface retrofitRoutesInterface;
     private List<C_I_recyclerViewList> c_i_recyclerViewLists;
-    private TextView faculty_name,course_code,course_name;
+    private TextView faculty_name,course_code,course_name, tStudents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class CourseInformatin extends AppCompatActivity {
         course_code=findViewById(R.id.c_i_course_code);
         course_code.setText(string.toUpperCase());
         course_name=findViewById(R.id.c_i_course_name);
+        tStudents=findViewById(R.id.tStudents);
 
         //recyclerView
         recyclerView=findViewById(R.id.c_i_recyclerView);
@@ -60,6 +61,7 @@ public class CourseInformatin extends AppCompatActivity {
                 if (response.code()==200){
                     faculty_name.setText(response.body().getFaculty_name());
                     course_name.setText(response.body().getCourse_name().toUpperCase());
+                    tStudents.setText("Students Registered:- "+response.body().getTotal_students().toString());
                     c_i_recyclerViewLists=response.body().getStudent_information();
                     if(c_i_recyclerViewLists.size()==0){
                         Toast.makeText(CourseInformatin.this,"No student registered",Toast.LENGTH_SHORT).show();

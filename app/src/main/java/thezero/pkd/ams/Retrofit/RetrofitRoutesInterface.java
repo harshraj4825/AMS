@@ -14,6 +14,7 @@ import retrofit2.http.Path;
 import thezero.pkd.ams.Retrofit.Retrofit_models.C_I_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginFacultyResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
+import thezero.pkd.ams.Retrofit.Retrofit_models.S_A_I_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.course_registered_model;
 
 public interface RetrofitRoutesInterface {
@@ -26,8 +27,6 @@ public interface RetrofitRoutesInterface {
     //to change student password
     @PUT("/student/{userId}")
     Call<Void> executeStudChange_pass(@Path("userId") Integer userId,@Body JsonObject jsonObject);
-
-
     //request for faculty login
     @POST("/faculty/login")
     Call<LoginFacultyResult> executeFacultyLogin(@Body JsonObject jsonObject);
@@ -41,9 +40,10 @@ public interface RetrofitRoutesInterface {
     //to get all courses which faculty registered
     @POST("/courses/get-all")
     Call<List<course_registered_model>> executeFacGetCourses(@Body JsonObject jsonObject);
-
     //get course/registered student details.
     @POST("/courses/findone")
     Call<C_I_Result> executeC_I_result(@Body JsonObject jsonObject);
-
+    //to get attendance of a student for a paricular course
+    @POST("/courses/student-attendance")
+    Call<S_A_I_Result> executeS_A_I_result(@Body JsonObject jsonObject);
 }

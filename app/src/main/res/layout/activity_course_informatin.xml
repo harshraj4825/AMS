@@ -33,11 +33,15 @@
             android:layout_alignParentEnd="true"
             android:text="Faculty Name"/>
     </RelativeLayout>
+    <TextView
+        android:id="@+id/tStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Students=50"
+        android:gravity="center"
+        android:textSize="20sp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/c_i_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-
-
 </LinearLayout>

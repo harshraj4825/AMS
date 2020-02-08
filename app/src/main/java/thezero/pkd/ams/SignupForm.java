@@ -77,14 +77,14 @@ public class SignupForm extends AppCompatActivity implements AdapterView.OnItemS
                     JsonObject jsonObject=new JsonObject();
                     jsonObject.addProperty("Name",m_name);
                     jsonObject.addProperty("Password",m_pass);
-                    jsonObject.addProperty("Email",m_userId);
+                    jsonObject.addProperty("Email",m_userId.toLowerCase());
                     Call call=retrofitRoutesInterface.executeFacultySignUp(jsonObject);
                     call.enqueue(new Callback() {
                         @Override
                         public void onResponse(Call call, Response response) {
                             if (response.code()==200){
                                 Toast.makeText(SignupForm.this,"SignUp Successful",Toast.LENGTH_SHORT).show();
-                                user.setUserId(m_userId);
+                                user.setUserId(m_userId.toLowerCase());
                                 user.setPassword(m_pass);
                                 user.setName(m_name);
                                 Intent intent=new Intent(SignupForm.this,FacultyMain.class);

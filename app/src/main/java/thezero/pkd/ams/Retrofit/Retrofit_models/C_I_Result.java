@@ -7,6 +7,7 @@ import thezero.pkd.ams.Retrofit.Retrofit_models.Helper.C_I_recyclerViewList;
 public class C_I_Result {
     String course_name;
     String faculty_name;
+    Integer total_students;
     List<C_I_recyclerViewList> student_information;
 
     public String getCourse_name() {
@@ -31,5 +32,13 @@ public class C_I_Result {
 
     public void setStudent_information(List <C_I_recyclerViewList> student_information) {
         this.student_information = student_information;
+    }
+
+    public Integer getTotal_students() {
+        return total_students;
+    }
+
+    public void setTotal_students(Integer total_students) {
+        this.total_students = total_students;
     }
 }
