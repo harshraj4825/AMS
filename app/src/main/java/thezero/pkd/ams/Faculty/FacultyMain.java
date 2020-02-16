@@ -86,7 +86,7 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
             case R.id.nav_faculty_view_attendance:
                 //View Attendance fragment
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fac_fragment_container,new ViewAttendanceFragment())
+                        .replace(R.id.fac_fragment_container,new FacViewAttendanceFragment())
                         .commit();
                 break;
             case R.id.nav_faculty_register_course:

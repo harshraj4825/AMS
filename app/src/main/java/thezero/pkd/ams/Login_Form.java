@@ -70,7 +70,7 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
         @Override
         public void onClick(View view) {
             String Pass=userPassword.getText().toString();
-            String id=userId.getText().toString();
+            String id=userId.getText().toString().toLowerCase();
             User user=new User(Login_Form.this);
             if (spinner_selected==1){//spinner==1 means faculty selected
                 if(TextUtils.isEmpty(Pass)||TextUtils.isEmpty(id)){

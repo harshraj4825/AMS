@@ -13,17 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import thezero.pkd.ams.Faculty.AttendanceByDate;
 import thezero.pkd.ams.Faculty.CourseInformatin;
+import thezero.pkd.ams.Faculty.TakeAttendance;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Retrofit.Retrofit_models.course_registered_model;
 
 public class facHomeAdapter extends RecyclerView.Adapter<facHomeAdapter.modelViewHolder> {
     private List<course_registered_model> course_registered_modelList;
     Context context;
+    String ExtraInfo;
 
-    public facHomeAdapter(Context context, List <course_registered_model> course_registered_modelList) {
+    public facHomeAdapter(Context context, List <course_registered_model> course_registered_modelList,String ExtraInfo) {
         this.course_registered_modelList = course_registered_modelList;
         this.context=context;
+        this.ExtraInfo=ExtraInfo;
     }
 
     @NonNull
@@ -41,9 +45,21 @@ public class facHomeAdapter extends RecyclerView.Adapter<facHomeAdapter.modelVie
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           Intent intent =new Intent(context, CourseInformatin.class);
-           intent.putExtra("Course_code",course_registered_modelList.get(position).getCourse_code());
-           context.startActivity(intent);
+                if(ExtraInfo.equals("Home")){
+                    Intent intent =new Intent(context, CourseInformatin.class);
+                    intent.putExtra("Course_code",course_registered_modelList.get(position).getCourse_code());
+                    context.startActivity(intent);
+
+                }
+                else if(ExtraInfo.equals("ViewAttendance")){//from FacViewAttendance.java
+                    Intent intent =new Intent(context, AttendanceByDate.class);
+                    intent.putExtra("Course_code",course_registered_modelList.get(position).getCourse_code());
+                    context.startActivity(intent);
+                } else if (ExtraInfo.equals("TakeAttendance")) {
+                    Intent intent=new Intent(context, TakeAttendance.class);
+                    intent.putExtra("Course_code",course_registered_modelList.get(position).getCourse_code());
+                    context.startActivity(intent);
+                }
             }
         });
 

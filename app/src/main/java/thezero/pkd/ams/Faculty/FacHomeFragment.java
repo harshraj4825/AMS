@@ -38,7 +38,7 @@ public class FacHomeFragment extends Fragment {
     private facHomeAdapter facHomeAdapter;
     private List<course_registered_model> course_registered_modelList;
     private RetrofitRoutesInterface retrofitRoutesInterface;
-    private TextView textView;
+    private static String extraInfo="Home";
 
 
     public FacHomeFragment() {
@@ -72,7 +72,7 @@ public class FacHomeFragment extends Fragment {
                 DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
                 dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.line_border));
                 recyclerView.addItemDecoration(dividerItemDecoration);
-                facHomeAdapter=new facHomeAdapter(getContext(),course_registered_modelList);
+                facHomeAdapter=new facHomeAdapter(getContext(),course_registered_modelList,extraInfo);
                 recyclerView.setAdapter(facHomeAdapter);
             }
 

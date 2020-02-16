@@ -2,19 +2,20 @@ package thezero.pkd.ams.Retrofit;
 
 import com.google.gson.JsonObject;
 
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import thezero.pkd.ams.Retrofit.Retrofit_models.AttenListResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.C_I_Result;
+import thezero.pkd.ams.Retrofit.Retrofit_models.A_B_D_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginFacultyResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.S_A_I_Result;
+import thezero.pkd.ams.Retrofit.Retrofit_models.TakeAttendResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.course_registered_model;
 
 public interface RetrofitRoutesInterface {
@@ -43,7 +44,14 @@ public interface RetrofitRoutesInterface {
     //get course/registered student details.
     @POST("/courses/findone")
     Call<C_I_Result> executeC_I_result(@Body JsonObject jsonObject);
-    //to get attendance of a student for a paricular course
+    //to get attendance of a student for a particular course
     @POST("/courses/student-attendance")
     Call<S_A_I_Result> executeS_A_I_result(@Body JsonObject jsonObject);
+
+    @POST("/courses/get-course-attendance")
+    Call<A_B_D_Result> executeA_B_D_result(@Body JsonObject jsonObject);
+    @POST("/courses/get-attendance-students-list")
+    Call<List<AttenListResult>> executeAttendanceList(@Body JsonObject jsonObject);
+    @POST("/courses/all-registered-student")
+    Call<List<TakeAttendResult>> executeTakeAttend(@Body JsonObject jsonObject);
 }
