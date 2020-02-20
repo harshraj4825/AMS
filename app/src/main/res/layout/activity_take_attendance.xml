@@ -8,16 +8,17 @@
     android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
     tools:context=".Faculty.TakeAttendance">
-    <TextView
-        android:layout_alignParentStart="true"
-        android:layout_marginRight="8dp"
-        android:id="@+id/take_course_code"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_alignParentEnd="true"
-        android:text="CourseCode"/>
+        <TextView
+            android:layout_alignParentStart="true"
+            android:id="@+id/take_course_code"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:text="CourseCode"/>
+            />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/take_course_code"
         android:layout_above="@+id/submit_attend"

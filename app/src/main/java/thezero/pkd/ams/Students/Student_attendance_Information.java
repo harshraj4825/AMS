@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.Retrofit.Retrofit_models.Helper.S_A_I_recyclerViewList;
 import thezero.pkd.ams.Retrofit.Retrofit_models.S_A_I_Result;
 
-public class Student_attendance_Information extends AppCompatActivity {
+public class Student_attendance_Information extends Activity {
     private String roll_no,name,course_code;
     private TextView tRoll,tName,tCode,tTotal_lec,tTotal_atten;
     private RecyclerView recyclerView;

@@ -1,6 +1,9 @@
 package thezero.pkd.ams.Retrofit;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
 
 import java.util.List;
 
@@ -54,4 +57,6 @@ public interface RetrofitRoutesInterface {
     Call<List<AttenListResult>> executeAttendanceList(@Body JsonObject jsonObject);
     @POST("/courses/all-registered-student")
     Call<List<TakeAttendResult>> executeTakeAttend(@Body JsonObject jsonObject);
+    @PUT("/courses/attendance/{course_code}")
+    Call<Void> executeSubmitAttendance(@Path("course_code") JsonObject course_code, @Body JSONArray jsonArray );
 }

@@ -1,18 +1,20 @@
 package thezero.pkd.ams.Retrofit.Retrofit_models;
 
-public class TakeAttendResult {
+import java.io.Serializable;
+
+public class TakeAttendResult implements Serializable {
     private Integer si_no,userId;
     private String name;
+    public TakeAttendResult(){};
 
-    public TakeAttendResult(Integer si_no, Integer userId, String name) {
-        this.si_no = si_no;
+    public TakeAttendResult( Integer userId, String name) {
         this.userId = userId;
         this.name = name;
     }
 
-    public Integer getSl_no() {
-        return si_no;
-    }
+//    public Integer getSl_no() {
+//        return si_no;
+//    }
 
     public Integer getUserId() {
         return userId;
@@ -22,9 +24,9 @@ public class TakeAttendResult {
         return name;
     }
 
-    public void setSi_no(Integer si_no) {
-        this.si_no = si_no;
-    }
+//    public void setSi_no(Integer si_no) {
+//        this.si_no = si_no;
+//    }
 
     public void setUserId(Integer userId) {
         this.userId = userId;

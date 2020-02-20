@@ -7,27 +7,27 @@
         android:layout_alignParentStart="true"
         android:layout_width="40dp"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_height="match_parent"
         android:text="12"/>
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="131701013"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
         android:layout_toRightOf="@+id/take_sa_no"
+        android:id="@+id/take_stu_roll"/>
+    <TextView
+        android:layout_toRightOf="@+id/take_stu_roll"
+        android:layout_marginLeft="8dp"
         android:id="@+id/take_stu_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:text="hss hjshs hssh"/>
-    <TextView
-        android:layout_marginLeft="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/take_stu_name"
-        android:text="131701013"
-        android:textSize="20sp"
-        android:gravity="center_vertical"
+        android:textSize="16sp"
         android:layout_toLeftOf="@+id/take_checkbox"
-        android:id="@+id/take_stu_roll"/>
+        android:text="Name of student"/>
     <CheckBox
         android:layout_width="50dp"
         android:layout_height="match_parent"

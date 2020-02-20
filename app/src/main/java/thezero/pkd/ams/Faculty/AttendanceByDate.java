@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.Retrofit.Retrofit_models.A_B_D_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.Helper.A_B_D_recyclerViewList;
 
-public class AttendanceByDate extends AppCompatActivity {
+public class AttendanceByDate extends Activity {
     private RetrofitRoutesInterface retrofitRoutesInterface;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;

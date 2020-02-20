@@ -6,10 +6,6 @@
             android:title="@string/home"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_faculty_students_list"
-            android:title="@string/student_list"
-            android:icon="@drawable/student_icon"/>
-        <item
             android:id="@+id/nav_faculty_take_attendance"
             android:title="@string/take_attendance"
             android:icon="@drawable/take_attendance_icon"/>

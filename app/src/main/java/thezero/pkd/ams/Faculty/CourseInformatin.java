@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.Retrofit.Retrofit_models.C_I_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.Helper.C_I_recyclerViewList;
 
-public class CourseInformatin extends AppCompatActivity {
+public class CourseInformatin extends Activity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private C_I_Adapter cIAdapter;
@@ -44,7 +45,7 @@ public class CourseInformatin extends AppCompatActivity {
         course_code=findViewById(R.id.c_i_course_code);
         course_code.setText(string.toUpperCase());
         course_name=findViewById(R.id.c_i_course_name);
-        tStudents=findViewById(R.id.tStudents);
+        tStudents=findViewById(R.id.tStudents_reg);
 
         //recyclerView
         recyclerView=findViewById(R.id.c_i_recyclerView);

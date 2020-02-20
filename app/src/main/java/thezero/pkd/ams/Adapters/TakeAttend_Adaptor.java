@@ -22,7 +22,8 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
     OnItemCheckListener onItemClick;
     List<TakeAttendResult> takeAttendResults;
     Context context;
-   // private final boolean[] mCheckedStateA;
+    String reference;
+    Integer count=0;
 
     public interface OnItemCheckListener {
         void onItemCheck(TakeAttendResult item);
@@ -31,14 +32,12 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
     @NonNull
     public OnItemCheckListener onItemCheckListener;
 
-    public TakeAttend_Adaptor(Context context, List <TakeAttendResult> takeAttendResults,@NonNull OnItemCheckListener onItemCheckListener) {
+    public TakeAttend_Adaptor(Context context, List <TakeAttendResult> takeAttendResults,String reference,@NonNull OnItemCheckListener onItemCheckListener) {
         this.takeAttendResults = takeAttendResults;
         this.context = context;
         this.onItemClick = onItemCheckListener;
-//        mCheckedStateA = new boolean[takeAttendResults.size()];
+        this.reference=reference;
     }
-
-
 
     @NonNull
     @Override
@@ -51,7 +50,9 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
         final  TakeAttendResult currentItem = takeAttendResults.get(position);
         holder.name.setText(takeAttendResults.get(position).getName());
         holder.roll_no.setText(takeAttendResults.get(position).getUserId().toString());
-        holder.sl_no.setText(takeAttendResults.get(position).getSl_no().toString());
+       // holder.sl_no.setText(takeAttendResults.get(position).getSl_no().toString());
+        count=count+1;
+        holder.sl_no.setText(count.toString());
 
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +82,11 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
             roll_no=itemView.findViewById(R.id.take_stu_roll);
             name=itemView.findViewById(R.id.take_stu_name);
             takeCheckBox=itemView.findViewById(R.id.take_checkbox);
-            takeCheckBox.setChecked(true);
+//            if (reference.equals("TakeAttendance")) {
+//                takeCheckBox.setChecked(true);
+//            }else if (reference.equals("SubmitAttendance")){
+//                takeCheckBox.setChecked(false);
+//            }
             takeCheckBox.setClickable(false);
         }
         public void setOnClickListener(View.OnClickListener onClickListener) {

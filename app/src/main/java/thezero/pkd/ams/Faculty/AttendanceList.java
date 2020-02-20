@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.Retrofit.Retrofit_models.AttenListResult;
 
-public class AttendanceList extends AppCompatActivity {
+public class AttendanceList extends Activity {
     TextView tCourseCode,tDate;
     private RecyclerView recyclerView;
     private RetrofitRoutesInterface retrofitRoutesInterface;

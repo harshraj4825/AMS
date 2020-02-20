@@ -11,18 +11,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 import thezero.pkd.ams.Login_Form;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Students.ChangePasswordFragment;
-import thezero.pkd.ams.Students.ViewAttendanceFragment;
 import thezero.pkd.ams.utils.User;
 
 public class FacultyMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mNavDrawer;
     private TextView uName,uid;
+    private NavigationView navigationView;
+    private long backPressedTime;
+    private Toast backToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
         androidx.appcompat.widget.Toolbar fac_toolbar = findViewById(R.id.fac_toolbar);
         setSupportActionBar(fac_toolbar);
         mNavDrawer = findViewById(R.id.fac_drawer_layout);
-        NavigationView navigationView=findViewById(R.id.fac_nav_view);
+        navigationView=findViewById(R.id.fac_nav_view);
         //setting name and  id in nev header
         View headerView=navigationView.getHeaderView(0);
         uName=headerView.findViewById(R.id.uName);
@@ -58,7 +61,19 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
             mNavDrawer.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                backToast.cancel();
+                Intent a = new Intent(Intent.ACTION_MAIN);
+                a.addCategory(Intent.CATEGORY_HOME);
+                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(a);
+                return;
+            } else {
+                backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+                backToast.show();
+            }
+
+            backPressedTime = System.currentTimeMillis();
         }
     }
 
@@ -69,12 +84,6 @@ public class FacultyMain extends AppCompatActivity implements NavigationView.OnN
                 //Home fragment
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fac_fragment_container,new FacHomeFragment())
-                        .commit();
-                break;
-            case R.id.nav_faculty_students_list:
-                //Home fragment
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fac_fragment_container,new StudentsListFragment())
                         .commit();
                 break;
             case R.id.nav_faculty_take_attendance:

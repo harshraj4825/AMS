@@ -1,6 +1,7 @@
 package thezero.pkd.ams.Students;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import thezero.pkd.ams.Faculty.FacHomeFragment;
+import thezero.pkd.ams.Faculty.FacultyMain;
 import thezero.pkd.ams.R;
 import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
@@ -103,9 +105,11 @@ public class ChangePasswordFragment extends Fragment {
                         public void onResponse(Call <Void> call, Response <Void> response) {
                             if (response.code()==200){
                                 Toast.makeText(getContext(),"Password has successfully changed",Toast.LENGTH_SHORT).show();
-                                FragmentTransaction fragmentManager=getFragmentManager().beginTransaction();
-                                fragmentManager.replace(R.id.fac_fragment_container,new FacHomeFragment());
-                                fragmentManager.commit();
+//                                FragmentTransaction fragmentManager=getFragmentManager().beginTransaction();
+//                                fragmentManager.replace(R.id.fac_fragment_container,new FacHomeFragment());
+//                                fragmentManager.commit();
+                                Intent intent=new Intent(getContext(), FacultyMain.class);
+                                startActivity(intent);
 
                             }else if(response.code()==201){
                                 Toast.makeText(getContext(),"Your old password not correct",Toast.LENGTH_SHORT).show();

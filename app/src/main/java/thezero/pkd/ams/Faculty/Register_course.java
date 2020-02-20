@@ -1,6 +1,7 @@
 package thezero.pkd.ams.Faculty;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -70,9 +71,8 @@ public class Register_course extends Fragment {
                     public void onResponse(Call <Void> call, Response <Void> response) {
                         if(response.code()==200){
                             Toast.makeText(getContext(),"Course is successfully registered",Toast.LENGTH_SHORT).show();
-                            FragmentTransaction fragmentManager=getFragmentManager().beginTransaction();
-                            fragmentManager.replace(R.id.fac_fragment_container,new FacHomeFragment());
-                            fragmentManager.commit();
+                            Intent intent=new Intent(getContext(),FacultyMain.class);
+                            startActivity(intent);
                         }else if(response.code()==201){
                             Toast.makeText(getContext(),"Course is already registered",Toast.LENGTH_SHORT).show();
                         }

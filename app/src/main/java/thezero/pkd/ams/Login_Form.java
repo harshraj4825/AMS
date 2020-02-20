@@ -37,6 +37,8 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
     private Retrofit retrofit;
     TextView userId,userPassword;
     private RetrofitRoutesInterface retrofitRoutesInterface;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,13 +171,26 @@ public class Login_Form extends AppCompatActivity implements AdapterView.OnItemS
         // On selecting a spinner item
         String item = adapterView.getItemAtPosition(i).toString();
         spinner_selected=i;
-        // Showing selected spinner item
-        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView <?> adapterView) {
         // TODO Auto-generated method stub
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }
