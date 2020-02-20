@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".Faculty.SubmitAttendence">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/s_course_code"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:text="Course Code"
+        android:textSize="20sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/parent_submit_layout"
+        android:layout_below="@+id/s_course_code"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Student Present"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:id="@+id/student_present"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Student Absent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/student_absent"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/parent_submit_layout"
+        android:layout_above="@+id/final_submit_attend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_all_absent_student_recyclerView"/>
+
+    <Button
+        android:id="@+id/final_submit_attend"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginLeft="3dp"
+        android:text="Submit Attend"
+        android:background="@drawable/rounded_button"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>
