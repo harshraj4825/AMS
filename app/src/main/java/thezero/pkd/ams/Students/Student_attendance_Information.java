@@ -25,6 +25,7 @@ import thezero.pkd.ams.Retrofit.ClientApi;
 import thezero.pkd.ams.Retrofit.RetrofitRoutesInterface;
 import thezero.pkd.ams.Retrofit.Retrofit_models.Helper.S_A_I_recyclerViewList;
 import thezero.pkd.ams.Retrofit.Retrofit_models.S_A_I_Result;
+import thezero.pkd.ams.utils.User;
 
 public class Student_attendance_Information extends Activity {
     private String roll_no,name,course_code;
@@ -34,6 +35,7 @@ public class Student_attendance_Information extends Activity {
     private RecyclerView.LayoutManager layoutManager;
     private S_A_I_Adaptor sAIAdaptor;
     private List<S_A_I_recyclerViewList> s_a_i_recyclerViewLists;
+    private Integer integer;
 
 
     @Override
@@ -41,9 +43,19 @@ public class Student_attendance_Information extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_attendance__information);
         Intent intent=getIntent();
-        name=intent.getStringExtra("student_name");
-        roll_no=intent.getStringExtra("student_roll");
-        course_code=intent.getStringExtra("course_code");
+
+        integer=intent.getIntExtra("ref",0);
+        if(integer==1){
+            name=intent.getStringExtra("student_name");
+            roll_no=intent.getStringExtra("student_roll");
+            course_code=intent.getStringExtra("course_code");
+        }else if (integer==2){
+
+           name=new User(Student_attendance_Information.this).getName();
+           roll_no=new User(Student_attendance_Information.this).getUserId();
+           course_code=intent.getStringExtra("course_code");
+        }
+
 
         tCode=findViewById(R.id.s_a_i_course_code);
         tCode.setText(course_code);

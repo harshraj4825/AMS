@@ -9,6 +9,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -20,6 +21,7 @@ import thezero.pkd.ams.Retrofit.Retrofit_models.LoginStudentResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.S_A_I_Result;
 import thezero.pkd.ams.Retrofit.Retrofit_models.TakeAttendResult;
 import thezero.pkd.ams.Retrofit.Retrofit_models.course_registered_model;
+import thezero.pkd.ams.Retrofit.Retrofit_models.student_home_course_list;
 
 public interface RetrofitRoutesInterface {
     //request for student login
@@ -31,6 +33,9 @@ public interface RetrofitRoutesInterface {
     //to change student password
     @PUT("/student/{userId}")
     Call<Void> executeStudChange_pass(@Path("userId") Integer userId,@Body JsonObject jsonObject);
+    //to get course list for student section
+    @GET("/student/course-list/{UserId}")
+    Call<List<student_home_course_list>> executeStudCourseList(@Path("UserId") String userId);
     //request for faculty login
     @POST("/faculty/login")
     Call<LoginFacultyResult> executeFacultyLogin(@Body JsonObject jsonObject);

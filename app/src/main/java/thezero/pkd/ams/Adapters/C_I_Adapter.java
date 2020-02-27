@@ -45,6 +45,7 @@ public class C_I_Adapter extends RecyclerView.Adapter<C_I_Adapter.CourseInformat
              @Override
              public void onClick(View view) {
                  Intent intent=new Intent(context, Student_attendance_Information.class);
+                 intent.putExtra("ref",1);
                  intent.putExtra("student_roll",c_i_recyclerViewLists.get(position).getStudent_roll_number());
                  intent.putExtra("student_name",c_i_recyclerViewLists.get(position).getStudent_name());
                  intent.putExtra("course_code",course_code);

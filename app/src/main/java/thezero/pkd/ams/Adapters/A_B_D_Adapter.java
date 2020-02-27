@@ -46,7 +46,6 @@ public class A_B_D_Adapter extends RecyclerView.Adapter<A_B_D_Adapter.A_B_D_Mode
                 intent.putExtra("date",a_b_d_recyclerViewLists.get(position).getDate());
                 intent.putExtra("course_code",course_code);
                 context.startActivity(intent);
-
             }
         });
     }

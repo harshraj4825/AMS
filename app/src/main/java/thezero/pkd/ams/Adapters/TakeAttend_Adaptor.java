@@ -47,24 +47,46 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
     }
     @Override
     public void onBindViewHolder(@NonNull TakeAttendViewModel holder, int position) {
-        final  TakeAttendResult currentItem = takeAttendResults.get(position);
+        final TakeAttendResult currentItem = takeAttendResults.get(position);
         holder.name.setText(takeAttendResults.get(position).getName());
         holder.roll_no.setText(takeAttendResults.get(position).getUserId().toString());
        // holder.sl_no.setText(takeAttendResults.get(position).getSl_no().toString());
-        count=count+1;
+        count=position+1;
         holder.sl_no.setText(count.toString());
 
-        holder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder.takeCheckBox.setChecked(!holder.takeCheckBox.isChecked());
-                if (((TakeAttendViewModel) holder).takeCheckBox.isChecked()) {
-                    onItemClick.onItemCheck(currentItem);
-                } else {
-                    onItemClick.onItemUncheck(currentItem);
-                }
+//        holder.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                holder.takeCheckBox.setChecked(!holder.takeCheckBox.isChecked());
+//                if (((TakeAttendViewModel) holder).takeCheckBox.isChecked()) {
+//                    onItemClick.onItemCheck(currentItem);
+//                } else {
+//                    onItemClick.onItemUncheck(currentItem);
+//                }
+//            }
+//        });
+        //onclick on item in recycler view lamba method
+
+        holder.setOnClickListener((View v)->{
+            holder.takeCheckBox.setChecked(!((TakeAttendViewModel) holder).takeCheckBox.isChecked());
+            if (((TakeAttendViewModel) holder).takeCheckBox.isChecked()) {
+                onItemClick.onItemCheck(currentItem);
+            } else {
+                onItemClick.onItemUncheck(currentItem);
             }
         });
+
+//        holder.takeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b){
+//                    onItemClick.onItemCheck(currentItem);
+//                }else {
+//                    onItemClick.onItemUncheck(currentItem);
+//                }
+//
+//            }
+//        });
     }
 
     @Override
@@ -82,11 +104,7 @@ public class TakeAttend_Adaptor extends RecyclerView.Adapter<TakeAttend_Adaptor.
             roll_no=itemView.findViewById(R.id.take_stu_roll);
             name=itemView.findViewById(R.id.take_stu_name);
             takeCheckBox=itemView.findViewById(R.id.take_checkbox);
-//            if (reference.equals("TakeAttendance")) {
-//                takeCheckBox.setChecked(true);
-//            }else if (reference.equals("SubmitAttendance")){
-//                takeCheckBox.setChecked(false);
-//            }
+            takeCheckBox.setChecked(false);
             takeCheckBox.setClickable(false);
         }
         public void setOnClickListener(View.OnClickListener onClickListener) {
