@@ -74,10 +74,10 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                         .replace(R.id.fragment_container,new HomeFragment())
                         .commit();
                 break;
-            case R.id.nav_view_attendance:
+            case R.id.nav_register_here:
                 //View Attendance fragment
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container,new ViewAttendanceFragment())
+                        .replace(R.id.fragment_container,new Register_here())
                         .commit();
                 break;
             case R.id.nev_change_password:

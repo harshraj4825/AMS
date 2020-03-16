@@ -36,6 +36,8 @@ public interface RetrofitRoutesInterface {
     //to get course list for student section
     @GET("/student/course-list/{UserId}")
     Call<List<student_home_course_list>> executeStudCourseList(@Path("UserId") String userId);
+    @PUT("/courses/register/student")
+    Call<Void> executeRegisterCourse(@Body JsonObject jsonObject);
     //request for faculty login
     @POST("/faculty/login")
     Call<LoginFacultyResult> executeFacultyLogin(@Body JsonObject jsonObject);

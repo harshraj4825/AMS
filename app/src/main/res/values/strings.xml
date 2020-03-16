@@ -18,7 +18,7 @@
     <string name="home">Home</string>
     <string name="student_list">Student List</string>
     <string name="take_attendance">Take Attendance</string>
-    <string name="view_attendance">View Attendance</string>
+    <string name="register_for_course">Register Here</string>
     <string name="change_password">Change Password</string>
     <string name="don_t_have_account_signup">Don\'t have account SignUp</string>
     <string name="forget_password">Forget password</string>
@@ -38,7 +38,6 @@
     <string name="enter_new_password">Enter new password</string>
     <string name="password">Password</string>
     <string name="register_course">Register Course</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_attendance">View Attendance</string>
 </resources>

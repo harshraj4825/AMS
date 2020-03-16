@@ -12,22 +12,20 @@
             android:title="@string/home"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_view_attendance"
-            android:title="@string/view_attendance"
+            android:id="@+id/nav_register_here"
+            android:title="@string/register_for_course"
             android:icon="@drawable/view_attendance_icon"/>
 
         <item android:id="@+id/nev_change_password"
             android:icon="@drawable/change_passwod_icon"
             android:title="@string/change_password"/>
     </group>
-    <!--    use to perform action like toast or intent-->
-    <!--        nested menu for showing divider line-->
-    <item android:title="@string/communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:title="@string/logout"
-                android:icon="@drawable/logout_icon"/>
-        </menu>
-    </item>
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/logout"
+            android:icon="@drawable/logout_icon"/>
+    </group>
 </menu>

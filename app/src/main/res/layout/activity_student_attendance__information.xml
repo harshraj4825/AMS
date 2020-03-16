@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="8dp"
     tools:context=".Students.Student_attendance_Information">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/stu_float"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:backgroundTint="#C0C0C0"
+        app:fabSize="mini"
+        android:src="@drawable/pdf_download"
+        android:background="@drawable/pdf_download"
+        />
     <TextView
+        android:layout_alignParentStart="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/s_a_i_course_code"
@@ -16,7 +30,9 @@
         android:textAllCaps="true"
         android:gravity="center"/>
     <RelativeLayout
+        android:layout_below="@+id/s_a_i_course_code"
         android:layout_width="wrap_content"
+        android:id="@+id/s_a_i_recycelerParent"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/s_a_i_userId"
@@ -34,7 +50,9 @@
             android:text="Student Name"/>
     </RelativeLayout>
     <RelativeLayout
+        android:layout_below="@+id/s_a_i_recycelerParent"
         android:layout_width="match_parent"
+        android:id="@+id/s_a_i_recycle2"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_alignParentStart="true"
@@ -71,8 +89,9 @@
         </LinearLayout>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/s_a_i_recycle2"
         android:id="@+id/s_a_i_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+</RelativeLayout>

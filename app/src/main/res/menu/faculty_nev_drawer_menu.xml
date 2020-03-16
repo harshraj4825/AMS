@@ -22,15 +22,12 @@
             android:icon="@drawable/change_passwod_icon"
             android:title="@string/change_password"/>
     </group>
-    <!--    use to perform action like toast or intent-->
-    <!--        nested menu for showing divider line-->
-    <item android:title="@string/communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_faculty_logout"
-                android:title="@string/logout"
-                android:icon="@drawable/logout_icon"/>
-        </menu>
-    </item>
-
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_faculty_logout"
+            android:title="@string/logout"
+            android:icon="@drawable/logout_icon"/>
+    </group>
 </menu>
